@@ -10,16 +10,13 @@ const ProductCheckOutCard = ({ product, index, dispatch }: Props) => {
   const [options] = useState<number[]>([1, 2, 3, 4, 5]);
   const [quantity, setQuantity] = useState(product.quantity);
 
-  const handleQuantity = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    const target = e.target as HTMLSelectElement;
-    setQuantity(Number(target.value));
+  const handleQuantity = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setQuantity(Number(e.target.value));
     dispatch({
       type: "UPDATE_PRODUCT",
       payload: {
         index,
-        quantity: Number(target.value),
+        quantity: Number(e.target.value),
       },
     });
   };
