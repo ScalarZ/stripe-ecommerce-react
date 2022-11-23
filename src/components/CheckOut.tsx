@@ -12,7 +12,7 @@ const CheckOut = ({ state, dispatch }: Props) => {
   };
 
   const createCheckOut = useMutation(state, () =>
-    fetch("http://localhost:8080/product/create-checkout-session", {
+    fetch(import.meta.env.VITE_STRIPE_CHECKOUT_API, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -25,9 +25,16 @@ const CheckOut = ({ state, dispatch }: Props) => {
 
   return (
     <div className="p-6">
-      <p className="text-center text-lg">
-        {state.length === 0 ? "No selected items" : null}
-      </p>
+      <div className="mb-6 text-center text-lg">
+        {state.length === 0 ? (
+          <p>No selected items</p>
+        ) : (
+          <p>
+            For payment testing, type <b className="text-blue-600">4242 4242 4242 4242</b> as a visa card, and
+            enter a random information in the other fields
+          </p>
+        )}
+      </div>
       <ul className="grid grid-cols-1 gap-y-4">
         {state?.map((product, index) => (
           <ProductCheckOutCard

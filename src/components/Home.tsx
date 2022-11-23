@@ -17,12 +17,12 @@ interface Props {
 }
 
 const Home = ({ dispatch }: Props) => {
-  const { data, isLoading, isError, error, isFetching } = useProudcts();
+  const { data, isLoading, isError, isFetching } = useProudcts();
 
   if (isLoading) return <p className="p-8 text-center">Loading...</p>;
 
   if (isError)
-    return <p className="p-8 text-center">Error whiile loading the data</p>;
+    return <p className="p-8 text-center">Error while loading the data</p>;
 
   return (
     <div className="mx-auto px-8 max-w-7xl">

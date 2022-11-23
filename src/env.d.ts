@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_STRIPE_PRODUCT_API: string;
+  readonly VITE_STRIPE_CHECKOUT_API: string;
   // more env variables...
 }
 
